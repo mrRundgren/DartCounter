@@ -17,7 +17,7 @@ jobs:
           dotnet-version: 7.0.200
       # publishes Blazor project to the release-folder
       - name: Publish .NET Core Project
-        run: dotnet publish DartCounter.csproj -c Release -o release --nologo
+        run: dotnet publish DartCounter/DartCounter.csproj -c Release -o release --nologo
       # changes the base-tag in index.html from '/' to 'BEMaterial' to match GitHub Pages repository subdirectory
       - name: Change base-tag in index.html from / to BEMaterial
         run: sed -i 's/<base href="\/" \/>/<base href="\/DartCounter\/" \/>/g' release/wwwroot/index.html
