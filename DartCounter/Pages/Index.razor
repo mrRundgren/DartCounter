@@ -15,49 +15,51 @@
     {
         var i = 0;
 
-        <div class="flex flex-col items-center">
-            <h1 class="text-left font-bold px-4 mt-6 mb-8 grid">
-                <span class="text-5xl">Scoreboard</span>
-            </h1>
-        </div>
-        <ol>
-        @foreach (var player in Players.OrderBy(_ => _.Turns))
-        {
-            i++;
-            <li class="text-left mb-2 select-none">
-                <div class="flex flex-row items-center gap-4 p-4 pr-6 bg-neutral-100 rounded-full">
-                    @if(i == 1)
-                    {
-                        <Icon Name="@Icons.WorkspacePremium" class="text-yellow-500" />
-                    }
-                    else if(i == 2)
-                    {
-                        <Icon Name="@Icons.WorkspacePremium" class="text-slate-500" />
-                    }
-                    else if (i == 3)
-                    {
-                        <Icon Name="@Icons.WorkspacePremium" class="text-amber-900" />
-                    }
-                    else
-                    {
-                        <Icon Name="@Icons.SentimentSad" />
-                    }
-                    <div class="flex-1 font-bold text-xl">@player.Name.ToUpper()</div>
-                    <div class="flex flex-col justify-center items-center">
-                        <small class="text-xs uppercase text-neutral-400">Turns</small>
-                        <strong class="font-bold">@player.Turns</strong>
+        <div class="p-4">
+            <div class="flex flex-col items-center">
+                <h1 class="text-left font-bold px-4 mt-6 mb-8 grid">
+                    <span class="text-5xl">Scoreboard</span>
+                </h1>
+            </div>
+            <ol>
+            @foreach (var player in Players.OrderBy(_ => _.Turns))
+            {
+                i++;
+                <li class="text-left mb-2 select-none">
+                    <div class="flex flex-row items-center gap-4 p-4 pr-6 bg-neutral-100 rounded-full">
+                        @if(i == 1)
+                        {
+                            <Icon Name="@Icons.WorkspacePremium" class="text-yellow-500" />
+                        }
+                        else if(i == 2)
+                        {
+                            <Icon Name="@Icons.WorkspacePremium" class="text-slate-500" />
+                        }
+                        else if (i == 3)
+                        {
+                            <Icon Name="@Icons.WorkspacePremium" class="text-amber-900" />
+                        }
+                        else
+                        {
+                            <Icon Name="@Icons.SentimentSad" />
+                        }
+                        <div class="flex-1 font-bold text-xl">@player.Name.ToUpper()</div>
+                        <div class="flex flex-col justify-center items-center">
+                            <small class="text-xs uppercase text-neutral-400">Turns</small>
+                            <strong class="font-bold">@player.Turns</strong>
+                        </div>
+                        <div class="flex flex-col justify-center items-center">
+                            <small class="text-xs uppercase text-neutral-400">Highest score</small>
+                            <strong class="font-bold">@player.Highscore</strong>
+                        </div>
                     </div>
-                    <div class="flex flex-col justify-center items-center">
-                        <small class="text-xs uppercase text-neutral-400">Highest score</small>
-                        <strong class="font-bold">@player.Highscore</strong>
-                    </div>
-                </div>
-            </li>
-        }
-        </ol>
-        <div class="mt-16 flex flex-row items-center justify-center gap-4">
-            <button class="flex-1 px-8 py-4 text-sm uppercase font-bold border border-2 border-black text-black rounded-full" type="button" @onclick="RestartGame">Restart Game</button>
-            <button class="flex-1 px-8 py-4 text-sm uppercase font-bold border border-2 border-black bg-black text-white rounded-full" type="button" @onclick="NewGame">New Game</button>
+                </li>
+            }
+            </ol>
+            <div class="mt-16 flex flex-row items-center justify-center gap-4">
+                <button class="flex-1 px-8 py-4 text-sm uppercase font-bold border border-2 border-black text-black rounded-full" type="button" @onclick="RestartGame">Restart Game</button>
+                <button class="flex-1 px-8 py-4 text-sm uppercase font-bold border border-2 border-black bg-black text-white rounded-full" type="button" @onclick="NewGame">New Game</button>
+            </div>
         </div>
     }
     <div class="grid gap-4">
