@@ -21,7 +21,7 @@
       "url": "index.html"
     },
     {
-      "hash": "sha256-X2MEGRD9vF4CcPDECDSXKT0F8k9UHpETS70W4Ebb0IU=",
+      "hash": "sha256-ZOPA0NvElEr9i9S4DFWL2iVlMS92nxcgcfmizRpMtxI=",
       "url": "manifest.json"
     },
     {
@@ -193,5 +193,5 @@
       "url": "_content\/BlazorMaterialSymbols\/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2"
     }
   ],
-  "version": "E2xJ1i7l"
+  "version": "bJlIDPYB"
 };
