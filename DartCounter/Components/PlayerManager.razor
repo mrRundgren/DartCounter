@@ -1,0 +1,70 @@
+﻿<View Title="Who's Playing?">
+    <form class="text-left grid gap-4 select-none p-4">
+        @{
+            if (Players.Count > 0)
+            {
+                int i = 1;
+
+                foreach (var player in Players.OrderByDescending(_ => _.Score))
+                {
+
+                    <fieldset class="border border-2 border-black block rounded-lg flex flex-row items-center gap-2">
+                        <legend class="text-xs ml-4 font-bold uppercase">Player #@(i++)</legend>
+                        <input placeholder="Nickname" type="text" @bind-value="player.Name" @bind-value:event="oninput" class="placeholder:text-black/20 flex-1 p-4 -mt-2 bg-transparent outline-none min-w-0 font-bold uppercase" />
+                        @if(i > 2)
+                        {
+                            <button type="button" class="p-2" @onclick="() => RemovePlayer(player)">
+                                <Icon Name="@Icons.Delete" />
+                            </button>
+                        }
+                    </fieldset>
+                }
+            }
+        }
+    </form>
+    <Toolbar>
+        <Button Text="Add Player" OnClick="AddPlayer" Outlined="true" />
+        <Button Disabled="Disabled" Text="Start Game" OnClick="StartGame" />
+    </Toolbar>
+</View>
+
+
+@code {
+    [Parameter]
+    public List<Player> Players { get; set; } = new();
+
+    [Parameter]
+    public EventCallback<List<Player>> PlayersChanged { get; set; }
+
+    [Parameter]
+    public bool Started { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> StartedChanged { get; set; }
+
+    void AddPlayer()
+    {
+        Players.Add(new Player());
+        if (PlayersChanged.HasDelegate) PlayersChanged.InvokeAsync(Players);
+    }
+
+    void RemovePlayer(Player player)
+    {
+        Players.Remove(player);
+        if (!Players.Any()) AddPlayer();
+        if (PlayersChanged.HasDelegate) PlayersChanged.InvokeAsync(Players);
+    }
+
+    void StartGame()
+    {
+        Players.Shuffle();
+        Started = true;
+        if (PlayersChanged.HasDelegate) PlayersChanged.InvokeAsync(Players);
+        if (StartedChanged.HasDelegate) StartedChanged.InvokeAsync(Started);
+    }
+
+    bool Disabled
+    {
+        get => Players.Count == 0 || Players.Any(_ => string.IsNullOrWhiteSpace(_.Name));
+    }
+}

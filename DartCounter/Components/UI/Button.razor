@@ -1,0 +1,15 @@
+﻿<button disabled="@Disabled" @onclick="OnClick" class="disabled:opacity-25 flex-1 select-none px-8 py-4 text-sm uppercase font-bold border border-2 border-black @(Outlined ? "bg-transparent text-black active:bg-black/20" : "bg-black text-white active:bg-neutral-900 active:border-neutral-900") rounded-full" type="button">@Text</button>
+
+@code {
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    [Parameter, EditorRequired]
+    public string Text { get; set; } = null!;
+
+    [Parameter]
+    public bool Outlined { get; set; }
+
+    [Parameter]
+    public bool Disabled { get; set; }
+}

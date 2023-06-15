@@ -1,0 +1,39 @@
+﻿@{
+    var i = 0;
+    <ol class="select-none p-4">
+        @foreach (var player in Players.OrderBy(_ => _.Score).ThenBy(_ => _.Turns))
+        {
+            i++;
+            <li class="text-left mb-2 select-none">
+                <div class="flex flex-row items-center gap-4 p-4 pr-6 bg-neutral-100 rounded-full @(player.Name == Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First().Name ? "outline outline-2 outline-black" : "")">
+                    @if (i == 1)
+                    {
+                        <Icon Name="@Icons.WorkspacePremium" class="text-yellow-500" />
+                    }
+                    else if (i == 2)
+                    {
+                        <Icon Name="@Icons.WorkspacePremium" class="text-slate-500" />
+                    }
+                    else if (i == 3)
+                    {
+                        <Icon Name="@Icons.WorkspacePremium" class="text-amber-900" />
+                    }
+                    else
+                    {
+                        <Icon Name="@Icons.SentimentSad" />
+                    }
+                    <div class="flex-1 font-bold  truncate">@player.Name.ToUpper()</div>
+                    <div class="font-bold">@player.Score</div>
+                </div>
+            </li>
+        }
+    </ol>
+}
+
+@code {
+    [Parameter]
+    public List<Player> Players { get; set; } = new();
+
+    [Parameter]
+    public EventCallback<List<Player>> PlayersChanged { get; set; }
+}

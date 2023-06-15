@@ -1,0 +1,80 @@
+﻿<View Title="Scoreboard">
+    @{
+        var i = 0;
+        <ol class="select-none p-4">
+            @foreach (var player in Players.OrderBy(_ => _.Turns))
+            {
+                i++;
+                <li class="text-left mb-2 select-none">
+                    <div class="flex flex-row items-center gap-4 p-4 pr-6 border-b border-neutral-100">
+                        @if (i == 1)
+                        {
+                            <Icon Name="@Icons.WorkspacePremium" class="text-yellow-500" />
+                        }
+                        else if (i == 2)
+                        {
+                            <Icon Name="@Icons.WorkspacePremium" class="text-slate-500" />
+                        }
+                        else if (i == 3)
+                        {
+                            <Icon Name="@Icons.WorkspacePremium" class="text-amber-900" />
+                        }
+                        else
+                        {
+                            <Icon Name="@Icons.SentimentSad" />
+                        }
+                        <div class="flex-1 font-bold text-xl truncate">@player.Name.ToUpper()</div>
+                        <div class="flex flex-col justify-center items-center">
+                            <small class="text-xs uppercase text-neutral-400">Turns</small>
+                            <strong class="font-bold">@(player.Turns + 1)</strong>
+                        </div>
+                        <div class="flex flex-col justify-center items-center">
+                            <small class="text-xs uppercase text-neutral-400">Highest score</small>
+                            <strong class="font-bold">@player.Highscore</strong>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ol>
+        <Toolbar>
+            <Button Text="Restart Game" OnClick="RestartGame" Outlined="true" />
+            <Button Text="New Game" OnClick="NewGame" />
+        </Toolbar>
+    }
+</View>
+
+@code {
+    [Parameter]
+    public List<Player> Players { get; set; } = new();
+
+    [Parameter]
+    public EventCallback<List<Player>> PlayersChanged { get; set; }
+
+    [Parameter]
+    public bool Started { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> StartedChanged { get; set; }
+
+    async Task RestartGame()
+    {
+        foreach (var player in Players)
+        {
+            player.Score = 301;
+            player.Turns = 0;
+            player.Highscore = 0;
+        }
+
+        Players.Shuffle();
+
+        if (PlayersChanged.HasDelegate) await PlayersChanged.InvokeAsync(Players);
+    }
+
+    async Task NewGame()
+    {
+        Players = new List<Player> { new Player() };
+        Started = false;
+        if (PlayersChanged.HasDelegate) await PlayersChanged.InvokeAsync(Players);
+        if (StartedChanged.HasDelegate) await StartedChanged.InvokeAsync(Started);
+    }
+}
