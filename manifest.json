@@ -3,8 +3,8 @@
   "short_name": "Dart Counter",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#4a54bf",
-  "theme_color": "#4a54bf",
+  "background_color": "#070b39",
+  "theme_color": "#070b39",
   "prefer_related_applications": true,
   "icons": [
     {
