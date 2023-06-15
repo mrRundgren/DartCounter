@@ -1,30 +1,30 @@
 ﻿@if (Players.Where(_ => _.Score > 0 && !string.IsNullOrWhiteSpace(_.Name)).Any())
 {
     <View Title="Submit Score">
-        <div class="grid gap-2 lg:grid-cols-2">
+        <div class="grid gap-2 lg:gap-6 lg:grid-cols-2">
             <div class="grid grid-cols-3 gap-2 w-full max-w-md mx-auto select-none p-4">
-                <fieldset class="col-span-3 border border-2 border-black block rounded-lg flex flex-row items-center gap-2 mb-8 bg-neutral-100">
+                <fieldset class="col-span-3 border border-2 border-white bg-black/20 block rounded-lg flex flex-row items-center gap-2 mb-8">
                     <legend class="text-xs ml-4 font-bold uppercase">Round #@(Player?.Turns + 1)</legend>
-                    <div class="flex-1 text-center p-4 -mt-2 outline-none min-w-0 font-bold uppercase">
+                    <div class="flex-1 text-center p-4 -mt-2 outline-none min-w-0 text-2xl font-bold uppercase">
                         @(string.IsNullOrWhiteSpace(_score) ? "0" : _score)
                     </div>
                 </fieldset>
-                <button @onclick="() => {_score = _score + 1;}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">1</button>
-                <button @onclick="() => {_score = _score + 2;}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">2</button>
-                <button @onclick="() => {_score = _score + 3;}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">3</button>
-                <button @onclick="() => {_score = _score + 4;}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">4</button>
-                <button @onclick="() => {_score = _score + 5;}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">5</button>
-                <button @onclick="() => {_score = _score + 6;}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">6</button>
-                <button @onclick="() => {_score = _score + 7;}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">7</button>
-                <button @onclick="() => {_score = _score + 8;}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">8</button>
-                <button @onclick="() => {_score = _score + 9;}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">9</button>
-                <button @onclick="() => { _score = string.IsNullOrEmpty(_score) ? _score : _score[..(_score.Length-1)];}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">DEL</button>
-                <button @onclick="() => {_score = _score + 0;}" class="active:bg-black/20 border border-2 border-black text-black text-xl font-bold rounded-full aspect-video flex items-center justify-center">0</button>
-                <button @onclick="() => SubmitScore(Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First())" class="bg-black active:bg-neutral-900 active:border-neutral-900 border border-2 border-black text-white text-xl font-bold rounded-full aspect-video flex items-center justify-center">OK</button>
+                <CalcButton OnClick="() => {_score = _score + 1;}" Text="1" Outlined="true" />
+                <CalcButton OnClick="() => {_score = _score + 2;}" Text="2" Outlined="true" />
+                <CalcButton OnClick="() => {_score = _score + 3;}" Text="3" Outlined="true" />
+                <CalcButton OnClick="() => {_score = _score + 4;}" Text="4" Outlined="true" />
+                <CalcButton OnClick="() => {_score = _score + 5;}" Text="5" Outlined="true" />
+                <CalcButton OnClick="() => {_score = _score + 6;}" Text="6" Outlined="true" />
+                <CalcButton OnClick="() => {_score = _score + 7;}" Text="7" Outlined="true" />
+                <CalcButton OnClick="() => {_score = _score + 8;}" Text="8" Outlined="true" />
+                <CalcButton OnClick="() => {_score = _score + 9;}" Text="9" Outlined="true" />
+                <CalcButton OnClick="() => { _score = string.IsNullOrEmpty(_score) ? _score : _score[..(_score.Length-1)];}" Outlined="true" Text="DEL" />
+                <CalcButton OnClick="() => {_score = _score + 0;}" Text="0" Outlined="true" />
+                <CalcButton OnClick="() => SubmitScore(Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First())" Text="OK" />
             </div>
             @if(ChildContent != null)
             {
-                <div class="grid-cols-3 w-full select-none">@ChildContent</div>
+                <div class="grid-cols-3 w-full select-none lg:mt-0.5">@ChildContent</div>
             }
         </div>
         <Toolbar>

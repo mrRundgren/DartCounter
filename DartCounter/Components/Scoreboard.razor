@@ -5,8 +5,8 @@
             @foreach (var player in Players.OrderBy(_ => _.Turns).ThenByDescending(_ => _.Highscore))
             {
                 i++;
-                <li class="text-left mb-2 select-none">
-                    <div class="flex flex-row items-center gap-4 p-4 pr-6 border-b border-neutral-200">
+                <li class="text-left select-none">
+                    <div class="flex flex-row items-center gap-4 p-4 pr-6 border-b border-white/20">
                         @if (i == 1)
                         {
                             <Icon Name="@Icons.WorkspacePremium" class="text-yellow-500" />
@@ -26,7 +26,7 @@
                         <div class="flex-1 font-bold text-xl truncate">@player.Name.ToUpper()</div>
                         <div class="flex flex-col justify-center items-center">
                             <small class="text-xs uppercase text-neutral-400">Turns</small>
-                            <strong class="font-bold">@(player.Turns + 1)</strong>
+                            <strong class="font-bold">@(player.Turns)</strong>
                         </div>
                         <div class="flex flex-col justify-center items-center">
                             <small class="text-xs uppercase text-neutral-400">Highest score</small>

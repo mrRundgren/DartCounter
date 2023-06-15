@@ -1,0 +1,15 @@
+﻿<button disabled="@Disabled" @onclick="OnClick" class="active:bg-white/20 border border-2 text-xl font-bold rounded-full aspect-video flex items-center justify-center @(Outlined ? "bg-transparent text-white active:bg-white/20" : "bg-white text-primary active:bg-white/80 active:border-white/80") rounded-full" type="button">@Text</button>
+
+@code {
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    [Parameter, EditorRequired]
+    public string Text { get; set; } = null!;
+
+    [Parameter]
+    public bool Outlined { get; set; }
+
+    [Parameter]
+    public bool Disabled { get; set; }
+}

@@ -1,11 +1,11 @@
 ﻿@{
     var i = 0;
-    <ol class="select-none p-4">
+    <ol class="grid gap-2 select-none p-4 lg:mt-2.5">
         @foreach (var player in Players.OrderBy(_ => _.Score).ThenBy(_ => _.Turns))
         {
             i++;
             <li class="text-left mb-2 select-none">
-                <div class="flex flex-row items-center gap-4 p-4 pr-6 bg-neutral-100 rounded-full @(player.Name == Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First().Name ? "outline outline-2 outline-black" : "")">
+                <div class="flex flex-row items-center gap-4 p-4 pr-6 bg-white/10 rounded-full @(player.Name == Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First().Name ? "outline outline-2 outline-white" : "")">
                     @if (i == 1)
                     {
                         <Icon Name="@Icons.WorkspacePremium" class="text-yellow-500" />

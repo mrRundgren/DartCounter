@@ -1,4 +1,4 @@
-﻿<button disabled="@Disabled" @onclick="OnClick" class="disabled:opacity-25 flex-1 select-none px-8 py-4 text-sm uppercase font-bold border border-2 border-black @(Outlined ? "bg-transparent text-black active:bg-black/20" : "bg-black text-white active:bg-neutral-900 active:border-neutral-900") rounded-full" type="button">@Text</button>
+﻿<button disabled="@Disabled" @onclick="OnClick" class="disabled:opacity-25 disabled:pointer-events-none flex-1 select-none px-8 py-4 text-sm uppercase font-bold border border-2 border-white @(Outlined ? "bg-transparent text-white active:bg-white/20" : "bg-white text-primary active:bg-white/80 active:border-white/80") rounded-full" type="button">@Text</button>
 
 @code {
     [Parameter]
