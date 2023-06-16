@@ -9,7 +9,7 @@
             @switch(_current)
             {
                 case Counters.Dartboard:
-                    <Dartboard @ref="_dartboard" Player="Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First()" SubmitScore="OnSubmitScore" class="min-h-[437px] p-4 flex flex-col items-center justify-center w-full max-w-lg mx-auto pr-6" />
+                    <Dartboard @ref="_dartboard" Player="Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First()" SubmitScore="OnSubmitScore" class="min-h-[437px] p-4 flex flex-col items-center justify-center w-full max-w-2xl mx-auto pr-6" />
                     break;
                 default:
                     <div class="grid grid-cols-3 gap-4 w-full max-w-md mx-auto select-none p-4 pb-3">
