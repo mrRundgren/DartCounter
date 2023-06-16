@@ -163,23 +163,16 @@
 		_total += score;
 		_remaining -= _total;
 
-		if(_arrows == 3 || Player.Score - _total == 0 || _remaining <= 0)
-		{
-			if (SubmitScore.HasDelegate) await SubmitScore.InvokeAsync((Player, _total));
-			_arrows = 0;
-			_total = 0;
-		}
-
 		string text = "";
 		string ending = score > 1 ? "s" : "";
 
-		switch(score)
+		switch (score)
 		{
 			case 50: text = $"Bullseye!, {score} points"; break;
 			case 25: text = $"Oh so close!, {score} points"; break;
 			case 0: text = "That's a miss..."; break;
-			default: 
-				switch(field[..1])
+			default:
+				switch (field[..1])
 				{
 					case "t": text = $"Triple {score / 3}, {score} points"; break;
 					case "d": text = $"Double {score / 2}, {score} points"; break;
@@ -189,5 +182,12 @@
 		}
 
 		NotificationService.Show($"{text}");
+
+		if(_arrows == 3 || Player.Score - _total == 0 || _remaining <= 0)
+		{
+			if (SubmitScore.HasDelegate) await SubmitScore.InvokeAsync((Player, _total));
+			_arrows = 0;
+			_total = 0;
+		}
 	}
 }
