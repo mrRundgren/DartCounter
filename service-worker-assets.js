@@ -21,6 +21,10 @@
       "url": "index.html"
     },
     {
+      "hash": "sha256-QvYhdzUY1CmdAji9vV0MEZWQg7yjym6iEcgraBPKLbA=",
+      "url": "js\/dartboard.js"
+    },
+    {
       "hash": "sha256-H4N34jaxRKruIPm+PUmwzet8O631WAhZlQ2+iz8PoFE=",
       "url": "js\/wake-lock.js"
     },
@@ -61,7 +65,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-u\/d86JbI92YkxaTirWWyzYi9HP8Sb9pkedQLgZHM8qE=",
+      "hash": "sha256-pMJ3zXZ5ZZvV4+gkG\/V96MHraMtx1lv7KRzqW0RN6q0=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -69,15 +73,15 @@
       "url": "_framework\/BlazorMaterialSymbols.dll"
     },
     {
-      "hash": "sha256-F58s6qx8GIGsSKnW6tc9ywPISWqZ\/0teY5lT9H\/nzM0=",
+      "hash": "sha256-DQiQZftBEKPPB3AX1KyvxziX2Wo66iKtyvdl4tUXAeU=",
       "url": "_framework\/DartCounter.dll"
     },
     {
-      "hash": "sha256-9Nj8p5v\/jfyDqDxPzheKImlgpGNFM17Rzc3bny3eWPg=",
+      "hash": "sha256-xfcVscVwK3uNdXMwtZa9VuFT8xwtZWifgSkUDxnZC0I=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
-      "hash": "sha256-4piziG8TgL3PosMqqA4LXRbTFKslh9NvJ3i8YtkwmpQ=",
+      "hash": "sha256-AJrfnxnc1vjZUFGPCoAkn4m2HWyLaktDlj7ZFAYcTwo=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
@@ -121,7 +125,7 @@
       "url": "_framework\/Microsoft.Extensions.Primitives.dll"
     },
     {
-      "hash": "sha256-hzUbH0JMgddoKwFlMCFYXggV2X6wX6pWg7JUL9QP2z4=",
+      "hash": "sha256-ZVcaxKWdT7ay7RGYATg\/h4KizMrQSrcV5CcZC8wyhhU=",
       "url": "_framework\/Microsoft.JSInterop.dll"
     },
     {
@@ -157,7 +161,7 @@
       "url": "_framework\/System.Net.Primitives.dll"
     },
     {
-      "hash": "sha256-m7wAdAd\/00oMBmewzKIjZTwfFU6HT8dfXDXqipQizeg=",
+      "hash": "sha256-cPndJwi0jtZPdVWBiBO7iFn9YOc4uHEf2HxVQD9QQVM=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -165,7 +169,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-SGdCHfLDp5aGxwyfqk7UMkACfyce7LPEje1yFVpNyQY=",
+      "hash": "sha256-6ga1q8VqZAtQIIBRPeK4\/lbdElZdRjLg2BTnTxbn2O0=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -197,5 +201,5 @@
       "url": "_content\/BlazorMaterialSymbols\/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2"
     }
   ],
-  "version": "4vfMoUq8"
+  "version": "UShy1fgw"
 };
