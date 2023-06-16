@@ -6,22 +6,26 @@
     },
     {
       "hash": "sha256-9mVxMqRwBxMymHR8tLeJRRv260+RAuO82IEQY2MmhIw=",
-      "url": "favicon.ico"
+      "url": "img\/favicon.ico"
     },
     {
       "hash": "sha256-VuiC5++befcz51LCsetUlhTCkHH7\/qeNyEG44oRq\/HM=",
-      "url": "icon-192.png"
+      "url": "img\/icon-192.png"
     },
     {
       "hash": "sha256-2pJpXcAOGXkQM9QE\/2BG8xgDYBuraOPxz1elsbF2pGY=",
-      "url": "icon-512.png"
+      "url": "img\/icon-512.png"
     },
     {
-      "hash": "sha256-Uuy5IwbznVJE96fSfhZS6GzXXswAQBXB1RHxtBKjjWw=",
+      "hash": "sha256-woax0DtBiSCjSoFCYsx4Q5IP1Wk47ly7GFVys2FyW20=",
       "url": "index.html"
     },
     {
-      "hash": "sha256-aMqbRTVs92EYVlSbP+V5cre+GLkB917\/tAWWSyBfULg=",
+      "hash": "sha256-H4N34jaxRKruIPm+PUmwzet8O631WAhZlQ2+iz8PoFE=",
+      "url": "js\/wake-lock.js"
+    },
+    {
+      "hash": "sha256-r0Wz5jqW1vMJ+2orNcbxcYs7xLVzeRMR4eTvxct2sNA=",
       "url": "manifest.json"
     },
     {
@@ -57,7 +61,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-pxI9auicjT\/K9tz9oZVHI5so3NITINCHitiebLzOhBY=",
+      "hash": "sha256-u\/d86JbI92YkxaTirWWyzYi9HP8Sb9pkedQLgZHM8qE=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -65,7 +69,7 @@
       "url": "_framework\/BlazorMaterialSymbols.dll"
     },
     {
-      "hash": "sha256-CnDOLViYt6tONQC3\/YTONut+MTd9lBrtN5I1nJklRgI=",
+      "hash": "sha256-F58s6qx8GIGsSKnW6tc9ywPISWqZ\/0teY5lT9H\/nzM0=",
       "url": "_framework\/DartCounter.dll"
     },
     {
@@ -93,7 +97,7 @@
       "url": "_framework\/Microsoft.Extensions.Configuration.Json.dll"
     },
     {
-      "hash": "sha256-tkdkrAT4n35\/Yaa5YMYJpqdzzpHol9Ox3jP0FAYcFPE=",
+      "hash": "sha256-qFCkYD5RdzgC377u9FFuTEow+cSIxVFI+JvyAA\/L+g0=",
       "url": "_framework\/Microsoft.Extensions.DependencyInjection.Abstractions.dll"
     },
     {
@@ -161,7 +165,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-6J01u+8Yx9HXHst8NgiFVaMSpz8w8bCR2vOfmgrTG\/Q=",
+      "hash": "sha256-SGdCHfLDp5aGxwyfqk7UMkACfyce7LPEje1yFVpNyQY=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -193,5 +197,5 @@
       "url": "_content\/BlazorMaterialSymbols\/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2"
     }
   ],
-  "version": "qM6Ts4Q+"
+  "version": "4vfMoUq8"
 };
