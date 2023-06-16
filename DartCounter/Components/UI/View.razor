@@ -1,13 +1,20 @@
-﻿<div class="pb-[88px] w-full max-w-5xl mx-auto">
-    <Title Text="@Title" />
+﻿<div class="pb-[88px] md:pb-0 w-full max-w-5xl mx-auto">
+    @if(!string.IsNullOrWhiteSpace(Title))
+    {
+        <Title Text="@Title" />
+    }
+    else
+    {
+        <div class="h-12">&nbsp;</div>
+    }
     @ChildContent
 </div>
 @code {
     [Parameter, EditorRequired]
     public RenderFragment ChildContent { get; set; } = null!;
 
-    [Parameter, EditorRequired]
-    public string Title { get; set; } = null!;
+    [Parameter]
+    public string? Title { get; set; }
 
     [Parameter]
     public bool Visible { get; set; }

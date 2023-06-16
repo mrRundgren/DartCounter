@@ -1,7 +1,7 @@
 ﻿<View Title="Final Standings">
     @{
         var i = 0;
-        <ol class="select-none p-4">
+        <ol class="select-none p-4 max-w-3xl mx-auto">
             @foreach (var player in Players.OrderBy(_ => _.Turns).ThenByDescending(_ => _.Highscore))
             {
                 i++;

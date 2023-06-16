@@ -19,7 +19,25 @@ public class DartboardInterop : IAsyncDisposable
 		return await module.InvokeAsync<string?>("dartboardClick", x, y);
 	}
 
-	public async ValueTask DisposeAsync()
+    public async ValueTask ShowDarts()
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("showDarts");
+    }
+
+    public async ValueTask HideDarts()
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("hideDarts");
+    }
+
+    public async ValueTask RemoveDarts()
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("removeDarts");
+    }
+
+    public async ValueTask DisposeAsync()
 	{
 		if (moduleTask.IsValueCreated)
 		{

@@ -1,15 +1,18 @@
-﻿@if (Players.Where(_ => _.Score > 0 && !string.IsNullOrWhiteSpace(_.Name)).Any())
+﻿@inject DartboardInterop DartboardInterop
+@inject NotificationService NotificationService
+
+@if (Players.Where(_ => _.Score > 0 && !string.IsNullOrWhiteSpace(_.Name)).Any())
 {   
     <View Title="Submit Score">
         <div class="grid gap-4 lg:gap-6 lg:grid-cols-2">
-            <div class="px-4 flex flex-row items-center gap-4 border-b border-white/20 lg:col-span-2">
-                <button @onclick="() => _current = Counters.Dartboard" class="@(_current == Counters.Dartboard ? "border-b border-white text-white" : "border-b border-transparent text-white/50") flex-1 uppercase text-xs font-bold px-4 py-2 -mb-px">Dartboard</button>
-                <button @onclick="() => _current = Counters.Manual" class="@(_current == Counters.Manual ? "border-b border-white text-white" : "border-b border-transparent text-white/50") flex-1 uppercase text-xs font-bold px-4 py-2 -mb-px">Manual</button>
+            <div class="px-4 flex flex-row items-center gap-4 border-b border-white/20 lg:col-span-2 transition-colors">
+                <button @onclick="() => ChangeCounter(Counters.Dartboard)" class="@(_current == Counters.Dartboard ? "border-b border-white text-white" : "border-b border-transparent text-white/50") transition-colors flex-1 uppercase text-xs font-bold px-4 py-2 -mb-px">Dartboard</button>
+                <button @onclick="() => ChangeCounter(Counters.Manual)" class="@(_current == Counters.Manual ? "border-b border-white text-white" : "border-b border-transparent text-white/50") transition-colors flex-1 uppercase text-xs font-bold px-4 py-2 -mb-px">Manual</button>
             </div>
             @switch(_current)
             {
                 case Counters.Dartboard:
-                    <Dartboard @ref="_dartboard" Player="Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First()" SubmitScore="OnSubmitScore" class="min-h-[437px] p-4 flex flex-col items-center justify-center w-full max-w-2xl mx-auto pr-6" />
+                    <Dartboard @ref="_dartboard" Player="Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First()" SubmitScore="OnSubmitScore" class="cursor-pointer min-h-[437px] p-4 flex flex-col items-center justify-center w-full max-w-2xl mx-auto pr-6" />
                     break;
                 default:
                     <div class="grid grid-cols-3 gap-4 w-full max-w-md mx-auto select-none p-4 pb-3">
@@ -67,7 +70,20 @@
     string _score = string.Empty;
     Counters _current = Counters.Dartboard;
 
-    void SubmitScore(Player player)
+    async Task ChangeCounter(Counters counter)
+    {
+        if(counter == Counters.Manual)
+        {
+            await DartboardInterop.HideDarts();
+        }
+        else
+        {
+            await DartboardInterop.ShowDarts();
+        }
+        _current = counter;
+    }
+
+    async Task SubmitScore(Player player)
     {
         var score = Convert.ToInt32(string.IsNullOrWhiteSpace(_score) ? 0 : _score);
         var calc = player.Score - score;
@@ -85,17 +101,15 @@
         }
 
         player.Turns++;
-
-        if (PlayersChanged.HasDelegate) PlayersChanged.InvokeAsync(Players);
-
-        StateHasChanged();
+        await DartboardInterop.RemoveDarts();
+        if (PlayersChanged.HasDelegate) await PlayersChanged.InvokeAsync(Players);
     }
 
-    void OnSubmitScore((Player player, int score) result)
+    async Task OnSubmitScore((Player player, int score) result)
     {
         _score = result.score.ToString();
         
-        SubmitScore(result.player);
+        await SubmitScore(result.player);
         
         if (Players.Where(_ => _.Score > 0 && !string.IsNullOrWhiteSpace(_.Name)).Any())
         {
@@ -104,10 +118,10 @@
         }
     }
 
-    void OnNextTurn(Player player)
+    async Task OnNextTurn(Player player)
     {
         player.Turns++;
-        if (PlayersChanged.HasDelegate) PlayersChanged.InvokeAsync(Players);
+        if (PlayersChanged.HasDelegate) await PlayersChanged.InvokeAsync(Players);
     }
 
     async Task QuitGame()

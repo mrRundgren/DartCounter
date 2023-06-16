@@ -1,0 +1,38 @@
+﻿@inject NotificationService NotificationService
+@implements IDisposable
+
+<div class="@(_isVisible ? "block animate-fade-in-from-top" : "hidden") fixed z-[1000] w-full top-0 left-0 p-2 lg:p-6">
+    <div class="flex flex-row items-center justify-center gap-4 p-4 sm:max-w-sm w-full border border-light-grey drop-shadow-lg rounded-lg bg-white/90 text-black">
+        <div class="flex flex-col flex-1 items-center justify-center text-xl uppercase font-bold">@_message</div>
+    </div>
+</div>
+
+@code {
+    private string? _message;
+    private bool _isVisible;
+
+    protected override void OnInitialized()
+    {
+        NotificationService.OnShow += Show;
+        NotificationService.OnHide += Hide;
+    }
+
+    private void Show(string message)
+    {
+        _message = message;
+        _isVisible = true;
+        StateHasChanged();
+    }
+
+    private void Hide()
+    {
+        _isVisible = false;
+        StateHasChanged();
+    }
+
+    void IDisposable.Dispose()
+    {
+        NotificationService.OnShow -= Show;
+        NotificationService.OnHide -= Hide;
+    }
+}

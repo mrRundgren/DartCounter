@@ -1,6 +1,6 @@
 ﻿@{
     var i = 0;
-    <ol class="grid gap-2 select-none p-4 lg:mt-2.5">
+    <ol class="grid gap-2 select-none p-4 max-w-2xl mx-auto lg:mt-2.5">
         @foreach (var player in Players.OrderBy(_ => _.Score).ThenBy(_ => _.Turns))
         {
             i++;
