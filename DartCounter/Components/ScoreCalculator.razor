@@ -1,11 +1,11 @@
 ﻿@if (Players.Where(_ => _.Score > 0 && !string.IsNullOrWhiteSpace(_.Name)).Any())
 {
     <View Title="Submit Score">
-        <div class="grid gap-2 lg:gap-6 lg:grid-cols-2">
-            <div class="grid grid-cols-3 gap-2 w-full max-w-md mx-auto select-none p-4">
-                <fieldset class="col-span-3 border border-2 border-white bg-black/20 block rounded-lg flex flex-row items-center gap-2 mb-8">
-                    <legend class="text-xs ml-4 font-bold uppercase">Round #@(Player?.Turns + 1)</legend>
-                    <div class="flex-1 text-center p-4 -mt-2 outline-none min-w-0 text-2xl font-bold uppercase">
+        <div class="grid gap-4 lg:gap-6 lg:grid-cols-2">
+            <div class="grid grid-cols-3 gap-4 w-full max-w-md mx-auto select-none p-4">
+                <fieldset class="col-span-3 border border-2 border-white/50 bg-black/20 block rounded-lg flex flex-row items-center gap-2 mb-8">
+                    <legend class="text-xs ml-4 font-bold uppercase text-white/50">Round #@(Player?.Turns + 1)</legend>
+                    <div class="flex-1 text-center p-4 -mt-2 outline-none min-w-0 text-4xl font-bold uppercase">
                         @(string.IsNullOrWhiteSpace(_score) ? "0" : _score)
                     </div>
                 </fieldset>
@@ -24,7 +24,7 @@
             </div>
             @if(ChildContent != null)
             {
-                <div class="grid-cols-3 w-full select-none lg:mt-0.5">@ChildContent</div>
+                <div class="grid-cols-3 w-full select-none lg:mt-2">@ChildContent</div>
             }
         </div>
         <Toolbar>

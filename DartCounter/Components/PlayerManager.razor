@@ -8,12 +8,12 @@
                 foreach (var player in Players.OrderByDescending(_ => _.Score))
                 {
 
-                    <fieldset class="border border-2 border-white block rounded-lg flex flex-row items-center gap-2">
-                        <legend class="text-xs ml-4 font-bold uppercase">Player #@(i++)</legend>
-                        <input placeholder="Nickname" type="text" @bind-value="player.Name" @bind-value:event="oninput" class="placeholder:text-white/20 flex-1 p-4 -mt-2 bg-transparent outline-none min-w-0 font-bold uppercase" />
+                    <fieldset class="border border-2 border-white/50 block rounded-lg flex flex-row items-center gap-2 transition-colors focus-within:border-white">
+                        <input placeholder="Nickname" type="text" @bind-value="player.Name" @bind-value:event="oninput" class="peer order-2 placeholder:text-white/20 flex-1 p-4 -mt-2 bg-transparent outline-none min-w-0 font-bold uppercase" />
+                        <legend class="text-xs ml-4 font-bold uppercase text-white/50 peer-focus:text-white order-1 transition-colors">Player #@(i++)</legend>
                         @if(i > 2)
                         {
-                            <button type="button" class="p-2" @onclick="() => RemovePlayer(player)">
+                            <button type="button" class="p-2 order-3" @onclick="() => RemovePlayer(player)">
                                 <Icon Name="@Icons.Delete" />
                             </button>
                         }
