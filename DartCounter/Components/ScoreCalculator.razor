@@ -9,10 +9,10 @@
             @switch(_current)
             {
                 case Counters.Dartboard:
-                    <Dartboard @ref="_dartboard" Player="Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First()" SubmitScore="OnSubmitScore" class="lg:col-span-2 p-4 flex flex-col items-center justify-center w-full max-w-lg mx-auto" />
+                    <Dartboard @ref="_dartboard" Player="Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First()" SubmitScore="OnSubmitScore" class="min-h-[437px] p-4 flex flex-col items-center justify-center w-full max-w-lg mx-auto pr-6" />
                     break;
                 default:
-                    <div class="grid grid-cols-3 gap-4 w-full max-w-md mx-auto select-none p-4 mb-0.5">
+                    <div class="grid grid-cols-3 gap-4 w-full max-w-md mx-auto select-none p-4 pb-3">
                         <fieldset class="col-span-3 border border-2 border-white/50 bg-black/20 block rounded-lg flex flex-row items-center gap-2 mb-8">
                             <legend class="text-xs ml-4 font-bold uppercase text-white/50">Round #@(Players.Where(_ => _.Score > 0).OrderBy(_ => _.Turns).First().Turns + 1)</legend>
                             <div class="flex-1 text-center p-4 -mt-2 outline-none min-w-0 text-4xl font-bold uppercase">
@@ -36,7 +36,7 @@
             }
             @if (ChildContent != null)
             {
-                <div class="w-full select-none lg:mt-2 @(_current == Counters.Dartboard ? "lg:col-span-2 w-full max-w-lg mx-auto" : "")">@ChildContent</div>
+                <div class="w-full select-none lg:mt-2">@ChildContent</div>
             }
         </div>
         <Toolbar>
