@@ -10,7 +10,7 @@
 
                     <fieldset class="border border-2 border-white/50 block rounded-lg flex flex-row items-center gap-2 transition-colors focus-within:border-white">
                         <input tabindex="@(i)" placeholder="Nickname" type="text" @bind-value="player.Name" @bind-value:event="oninput" class="peer order-2 placeholder:text-white/20 flex-1 p-4 -mt-2 bg-transparent outline-none min-w-0 font-bold uppercase" />
-                        <legend class="text-xs ml-4 font-bold uppercase text-white/50 peer-focus:text-white order-1 transition-colors">Player #@(i + 1)</legend>
+                        <legend class="text-xs ml-4 font-bold uppercase text-white/50 peer-focus:text-white order-1 transition-colors">Player #@(i)</legend>
                         @if(i > 1)
                         {
                             <button type="button" class="p-2 order-3" @onclick="() => RemovePlayer(player)">
