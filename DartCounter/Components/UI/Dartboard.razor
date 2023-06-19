@@ -86,15 +86,15 @@
 	<div class="px-4 w-full mt-6 border-b border-white/20">
 		<div class="flex flex-row items-center gap-4 p-3">
 			<div class="flex flex-col justify-center gap-0.5 flex-1">
-				<small class="text-xs uppercase text-neutral-400">Round #@(Player.Turns + 1)</small>
+				<small class="text-xs uppercase text-white/50">Round #@(Player.Turns + 1)</small>
 				<strong class="font-bold">@Player.Name</strong>
 			</div>
 			<div class="flex flex-col justify-center items-center gap-0.5">
-				<small class="text-xs uppercase text-neutral-400">Arrows</small>
+				<small class="text-xs uppercase text-white/50">Arrows</small>
 				<strong class="font-bold">@(3 - _arrows)</strong>
 			</div>
 			<div class="flex flex-col justify-center items-center gap-0.5">
-				<small class="text-xs uppercase text-neutral-400">Score</small>
+				<small class="text-xs uppercase text-white/50">Score</small>
 				<strong class="font-bold">@_remaining</strong>
 			</div>
 		</div>
@@ -102,24 +102,24 @@
 </div>
 
 @code {
-		[Parameter(CaptureUnmatchedValues = true)]
-		public Dictionary<string, object> UserAttributes { get; set; } = new();
+	[Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object> UserAttributes { get; set; } = new();
 
-		[Parameter]
-		public Player Player { get; set; } = new();
+	[Parameter]
+	public Player Player { get; set; } = new();
 
-		[Parameter]
-		public EventCallback<(Player player, int score)> SubmitScore { get; set; }
+	[Parameter]
+	public EventCallback<(Player player, int score)> SubmitScore { get; set; }
 
-		[Parameter]
-		public EventCallback<Player> NextTurn { get; set; }
+	[Parameter]
+	public EventCallback<Player> NextTurn { get; set; }
 
-		int _arrows = 0;
-		int _total = 0;
-		int _remaining = 0;
+	int _arrows = 0;
+	int _total = 0;
+	int _remaining = 0;
 
-		ElementReference _svg { get; set; }
-		Dictionary<string, int> Fields { get; set; } = new();
+	ElementReference _svg { get; set; }
+	Dictionary<string, int> Fields { get; set; } = new();
 
 	protected override void OnInitialized()
 	{
@@ -151,43 +151,52 @@
 
 	async Task DartboardClick(MouseEventArgs e)
 	{
-		var field = await DartboardInterop.Click(e.ClientX, e.ClientY) ?? "miss";
+		var field = await DartboardInterop.Click(e.ClientX, e.ClientY) ?? "OutOfBounds";
 		var score = 0;
 
-		if (Fields.ContainsKey(field))
+		if(field != "miss")
 		{
-			score = Fields[field];
-		}
+			if (Fields.ContainsKey(field))
+			{
+				score = Fields[field];
+			}
 
-		_arrows++;
-		_total += score;
-		_remaining -= _total;
+			_arrows++;
+			_total += score;
+			_remaining -= _total;
 
-		string text = "";
-		string ending = score > 1 ? "s" : "";
+			string text = "";
+			string ending = score > 1 ? "s" : "";
 
-		switch (score)
-		{
-			case 50: text = $"Bullseye!, {score} points"; break;
-			case 25: text = $"Oh so close!, {score} points"; break;
-			case 0: text = "That's a miss..."; break;
-			default:
-				switch (field[..1])
-				{
-					case "t": text = $"Triple {score / 3}, {score} points"; break;
-					case "d": text = $"Double {score / 2}, {score} points"; break;
-					default: text =  $"{score} point{ending}"; break;
-				}
-				break;
-		}
+			switch (score)
+			{
+				case 50: text = $"Bullseye!, {score} points"; break;
+				case 25: text = $"{score} points"; break;
+				case 0: text = "Miss!"; break;
+				default:
+					switch (field[..1])
+					{
+						case "t": text = $"Triple {score / 3}, {score} points"; break;
+						case "d": text = $"Double {score / 2}, {score} points"; break;
+						default: text =  $"{score} point{ending}"; break;
+					}
+					break;
+			}
 
-		NotificationService.Show($"{text}");
+			if (!String.IsNullOrWhiteSpace(text))
+			{
+				NotificationService.Show($"{text}");
+			}
 
-		if(_arrows == 3 || Player.Score - _total == 0 || _remaining <= 0)
-		{
-			if (SubmitScore.HasDelegate) await SubmitScore.InvokeAsync((Player, _total));
-			_arrows = 0;
-			_total = 0;
+			if (_arrows == 3 || Player.Score - _total == 0 || _remaining <= 0)
+			{
+				var tmp = _remaining > 0 ? "Next round..." : _remaining == 0 ? "Congratulations!" : "To high...";
+				
+				NotificationService.Show($"{_total} points, {tmp}");
+				if (SubmitScore.HasDelegate) await SubmitScore.InvokeAsync((Player, _total));
+				_arrows = 0;
+				_total = 0;
+			}
 		}
 	}
 }

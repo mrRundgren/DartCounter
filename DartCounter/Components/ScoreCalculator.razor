@@ -5,9 +5,9 @@
 {   
     <View Title="Submit Score">
         <div class="grid gap-4 lg:gap-6 lg:grid-cols-2">
-            <div class="px-4 flex flex-row items-center gap-4 border-b border-white/20 lg:col-span-2 transition-colors">
-                <button @onclick="() => ChangeCounter(Counters.Dartboard)" class="@(_current == Counters.Dartboard ? "border-b border-white text-white" : "border-b border-transparent text-white/50") transition-colors flex-1 uppercase text-xs font-bold px-4 py-2 -mb-px">Dartboard</button>
-                <button @onclick="() => ChangeCounter(Counters.Manual)" class="@(_current == Counters.Manual ? "border-b border-white text-white" : "border-b border-transparent text-white/50") transition-colors flex-1 uppercase text-xs font-bold px-4 py-2 -mb-px">Manual</button>
+            <div class="px-4 flex flex-row items-center gap-4 border-b border-b-4 border-white/20 lg:col-span-2 transition-colors">
+                <button @onclick="() => ChangeCounter(Counters.Dartboard)" class="@(_current == Counters.Dartboard ? "border-b border-white text-white" : "border-b border-transparent text-white/50") border-b-4 transition-colors flex-1 uppercase text-sm font-bold px-4 py-2 -mb-1">Dartboard</button>
+                <button @onclick="() => ChangeCounter(Counters.Manual)" class="@(_current == Counters.Manual ? "border-b border-white text-white" : "border-b border-transparent text-white/50") border-b-4 transition-colors flex-1 uppercase text-sm font-bold px-4 py-2 -mb-1">Manual</button>
             </div>
             @switch(_current)
             {
