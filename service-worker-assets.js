@@ -1,7 +1,7 @@
 ﻿self.assetsManifest = {
   "assets": [
     {
-      "hash": "sha256-Tx2dW3jf0OynToAAfP0ddSyFbTuSty70RSZIpZUY3zg=",
+      "hash": "sha256-CkJ91BA59CmndRWIiPdTLJ7MEUN3jYt0fDlZR9ttDVU=",
       "url": "css\/app.css"
     },
     {
@@ -17,11 +17,11 @@
       "url": "img\/icon-512.png"
     },
     {
-      "hash": "sha256-woax0DtBiSCjSoFCYsx4Q5IP1Wk47ly7GFVys2FyW20=",
+      "hash": "sha256-XhPXRgpC1Rbyvc9S00Y7y2K7CraKC+rqIL\/kOU2ItrY=",
       "url": "index.html"
     },
     {
-      "hash": "sha256-+FddkINMBhFWpUpgPcAbKehYRl97Y0nMcMhac\/eaBHU=",
+      "hash": "sha256-XZFsnKDb2gY+GgFHm1ymL56\/3ZViQYued+aouBwc1Lk=",
       "url": "js\/dartboard.js"
     },
     {
@@ -65,7 +65,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-Py\/a95hljss7Q0uljxtQh5O8K6PuvilL1rn1JUThC\/I=",
+      "hash": "sha256-LmPVHTURzgBjWa+7PYA0F7Yr9ohleZCWvvnLETl88PM=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -73,7 +73,7 @@
       "url": "_framework\/BlazorMaterialSymbols.dll"
     },
     {
-      "hash": "sha256-EvoaGzEytk5x4JXf9Z5XO8ZDebiwPyw\/rjTTN+CNSvk=",
+      "hash": "sha256-qqrtpcynTWp3ZJrQyamoXpfCKdygloTXXp+PH313kS8=",
       "url": "_framework\/DartCounter.dll"
     },
     {
@@ -221,5 +221,5 @@
       "url": "_content\/BlazorMaterialSymbols\/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2"
     }
   ],
-  "version": "SMpezspF"
+  "version": "PA+v+Fi1"
 };

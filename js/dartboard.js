@@ -5,12 +5,18 @@ export async function dartboardInit(svg) {
 }
 
 export function dartboardClick(x, y) {
-    var id = document.elementsFromPoint(x, y)[0].getAttribute('id');
-    var dart = document.createElement('div');
-    dart.className = "dartboard-dart"
-    dart.style.top = (y - 3) + "px";
-    dart.style.left = (x - 3) + "px";
-    document.body.appendChild(dart);
+    var element = document.elementsFromPoint(x, y)[0];
+    var id = element.getAttribute('id');
+
+    if (id != "miss") {
+        var dart = document.createElement('div');
+
+        dart.className = "dartboard-dart"
+        dart.style.top = ((y - 5) + document.documentElement.scrollTop) + "px";
+        dart.style.left = ((x - 5) + document.documentElement.scrollLeft) + "px";
+        document.body.appendChild(dart);
+    }
+
     return id;
 }
 
