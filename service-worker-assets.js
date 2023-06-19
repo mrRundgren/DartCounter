@@ -17,7 +17,7 @@
       "url": "img\/icon-512.png"
     },
     {
-      "hash": "sha256-XhPXRgpC1Rbyvc9S00Y7y2K7CraKC+rqIL\/kOU2ItrY=",
+      "hash": "sha256-d258eaqWoiq\/5XMisKpS\/tpJt9qhBRrduOS5RhTOYt8=",
       "url": "index.html"
     },
     {
@@ -65,7 +65,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-LmPVHTURzgBjWa+7PYA0F7Yr9ohleZCWvvnLETl88PM=",
+      "hash": "sha256-wDKIJ7ptvopvbqU72Ii2\/hrYWhLSft4vaWX9278cG0o=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -73,7 +73,7 @@
       "url": "_framework\/BlazorMaterialSymbols.dll"
     },
     {
-      "hash": "sha256-qqrtpcynTWp3ZJrQyamoXpfCKdygloTXXp+PH313kS8=",
+      "hash": "sha256-J\/NwD8VWXJ3O+t18vi5yBW7DlgOssYC49fV+4Cb5pLE=",
       "url": "_framework\/DartCounter.dll"
     },
     {
@@ -221,5 +221,5 @@
       "url": "_content\/BlazorMaterialSymbols\/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2"
     }
   ],
-  "version": "PA+v+Fi1"
+  "version": "lEoz8qOi"
 };
